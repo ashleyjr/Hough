@@ -8,15 +8,15 @@ module TB;
 
    reg                        nReset;
    reg                        Clk;
-   reg                        Pixel;
-   reg                        Frame;
-   reg	                      Line;
+   wire [7:0]                       Pixel;
+   wire                        Frame;
+   wire	                      Line;
+
+   integer count;
+   integer file;
 
 
-
-	InHandle 
-	#()
-	InHandle(
+	InHandle InHandle(
 		.nReset     (nReset),
 		.Clk       	(Clk),
 		.Pixel		(Pixel),
@@ -27,12 +27,37 @@ module TB;
 
 
 
-   initial begin
-      while(1) begin
-         #(CLK_PERIOD/2) Clk = 0;
-         #(CLK_PERIOD/2) Clk = 1;
-      end
-   end
+	initial begin
+		while(1) begin
+			#(CLK_PERIOD/2) Clk = 0;
+			#(CLK_PERIOD/2) Clk = 1;
+		end
+	end
+
+   	initial begin
+		#100 nReset = 1;
+		#100 nReset = 0;
+
+		file = $fopen("OutIm.dat","w");  
+        $fwrite(file,"Test\n");
+		
+		count = 0;
+		while(count < 2) begin
+			@ (posedge Clk) begin
+				if(Frame) begin 
+					$fwrite(file,"%d",Pixel);
+					count = count + 1;
+				end else begin
+					if(Line)
+						$fwrite(file,",%d\n",Pixel);
+					else
+						$fwrite(file,",%d",Pixel);
+				end
+			end
+		end
+        $fclose(file);
+
+	end
 
 
 

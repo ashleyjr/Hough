@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Modeltech_pe_edu_10.3c/examples
+vInHandle
+Z0 !s110 1410389302
+!i10b 1
+!s100 CFM5F@8523AAKNJA9[0mL2
+IW`T]D7WT[fELlUgcV`_oH3
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 dC:/Users/Ashley/Desktop/Hough/Project
+w1410386859
+8C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v
+FC:/Users/Ashley/Desktop/Hough/RTL/InHandle.v
+L0 1
+Z3 OP;L;10.3c;59
+r1
+!s85 0
+31
+!s108 1410389301.990000
+!s107 C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v|
+!s101 -O0
+!i113 1
+Z4 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@in@handle
+vTB
+R0
+!i10b 1
+!s100 boHBFI68<BbIVGj`m@_Co3
+I`YcU>dcJU[hHVjRoh_OS=1
+R1
+R2
+w1410389298
+8C:/Users/Ashley/Desktop/Hough/Verification/TB.v
+FC:/Users/Ashley/Desktop/Hough/Verification/TB.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1410389302.052000
+!s107 C:/Users/Ashley/Desktop/Hough/Verification/TB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Ashley/Desktop/Hough/Verification/TB.v|
+!s101 -O0
+!i113 1
+R4
+n@t@b
