@@ -12,6 +12,10 @@ module TB;
    wire                        Frame;
    wire	                      Line;
 
+   wire	[7:0] data;
+	wire [7:0] i;
+	wire [7:0] j;
+
    integer count;
    integer file;
 
@@ -24,7 +28,17 @@ module TB;
 		.Line		(Line)
 	);
   
-
+	OutHandle OutHandle(
+		.nReset     (nReset),
+		.Clk       	(Clk),
+		.Pixel		(Pixel),
+		.Frame		(Frame),
+		.Line		(Line),
+		.data		(data),
+		.i			(i),
+		.j 			(j)
+	);
+  
 
 
 	initial begin
@@ -39,22 +53,13 @@ module TB;
 		#100 nReset = 0;
 
 		file = $fopen("OutIm.dat","w");  
-        $fwrite(file,"Test\n");
 		
 		count = 0;
-		while(count < 2) begin
-			@ (posedge Clk) begin
-				if(Frame) begin 
-					$fwrite(file,"%d",Pixel);
-					count = count + 1;
-				end else begin
-					if(Line)
-						$fwrite(file,",%d\n",Pixel);
-					else
-						$fwrite(file,",%d",Pixel);
-				end
-			end
+		while(count < 500) begin
+			@(posedge Clk) $fwrite(file,"%d,%d,%d\n",i,j,data);
+			count = count + 1;
 		end
+		@(posedge Clk) $fwrite(file,"%d,%d,%d",i,j,data);
         $fclose(file);
 
 	end

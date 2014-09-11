@@ -13,7 +13,8 @@ module InHandle(
 	reg [7:0] row;
 	
 	always @ (posedge Clk or negedge nReset) begin
-		if(nReset) begin   
+		if(nReset) begin  
+			Pixel <= 0;
 			Frame <= 0;
 	    	Line  <= 0;							
 			row <= ROWS-1;
