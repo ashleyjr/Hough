@@ -6,34 +6,53 @@ module TB;
 
    parameter CLK_PERIOD = 10;          // 100MHz clock - 10ns period  
 
-   reg                        nReset;
-   reg                        Clk;
-   wire [7:0]                       Pixel;
-   wire                        Frame;
-   wire	                      Line;
+   	reg                  	nReset;
+   	reg                   	Clk;
+   
+   	wire 	[7:0]        	PixelIn2Ed;
+   	wire                   	FrameIn2Ed;
+   	wire	            	LineIn2Ed;
 
-   wire	[7:0] data;
-	wire [7:0] i;
-	wire [7:0] j;
+	wire 	[7:0]           PixelEd2Out;
+   	wire                  	FrameEd2Out;
+   	wire	               	LineEd2Out;
 
-   integer count;
-   integer file;
+
+   	wire	[7:0] 			data;
+	wire 	[7:0] 			i;
+	wire 	[7:0] 			j;
+	wire					FrameOut;
+
+	integer frames;
+   	integer file;
 
 
 	InHandle InHandle(
 		.nReset     (nReset),
 		.Clk       	(Clk),
-		.Pixel		(Pixel),
-		.Frame		(Frame),
-		.Line		(Line)
+		.Pixel		(PixelIn2Ed),
+		.Frame		(FrameIn2Ed),
+		.Line		(LineIn2Ed)
+	);
+
+	Edge Edge(
+		.nReset     (nReset),
+		.Clk       	(Clk),
+		.PixelIn	(PixelIn2Ed),
+		.FrameIn	(FrameIn2Ed),
+		.LineIn		(LineIn2Ed),
+		.PixelOut	(PixelEd2Out),
+		.FrameOut	(FrameEd2Out),
+		.LineOut	(LineEd2Out)
 	);
   
 	OutHandle OutHandle(
 		.nReset     (nReset),
 		.Clk       	(Clk),
-		.Pixel		(Pixel),
-		.Frame		(Frame),
-		.Line		(Line),
+		.Pixel		(PixelEd2Out),
+		.Frame		(FrameEd2Out),
+		.Line		(LineEd2Out),
+		.FrameOut	(FrameOut),
 		.data		(data),
 		.i			(i),
 		.j 			(j)
@@ -49,17 +68,25 @@ module TB;
 	end
 
    	initial begin
-		#100 nReset = 1;
 		#100 nReset = 0;
+		#100 nReset = 1;
 
-		file = $fopen("OutIm.dat","w");  
+		file = $fopen("../Verification/OutIm.dat","w");  
 		
-		count = 0;
-		while(count < 500) begin
-			@(posedge Clk) $fwrite(file,"%d,%d,%d\n",i,j,data);
-			count = count + 1;
+		frames = 0;
+		while(frames < 2) begin
+			@(posedge Clk) begin
+				if(FrameOut) begin 
+					frames = frames + 1;
+					$fwrite(file,"%d,%d,%d\n",j,i,data);
+				end else begin
+					if(frames == 1) begin
+						$fwrite(file,"%d,%d,%d\n",j,i,data);
+					end
+				end
+			end
 		end
-		@(posedge Clk) $fwrite(file,"%d,%d,%d",i,j,data);
+		$fwrite(file,"%d,%d,%d",j,i,data);
         $fclose(file);
 
 	end

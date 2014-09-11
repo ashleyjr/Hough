@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
 
 	# Open file and write verilog
-	raw = open("../Project/OutIm.dat", "r")
+	raw = open("../Verification/OutIm.dat", "r")
 	data = raw.read()
 	raw.close()
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 		if(j > j_max):
 			j_max = j
 
-	im = numpy.zeros((i_max+1,j_max+1),dtype=int)
+	im = numpy.zeros((i_max+1,j_max+1))
 	im.setflags(write=True)
 
 	print im
@@ -41,8 +41,7 @@ if __name__ == "__main__":
 		im[int(pixel[0])][int(pixel[1])] = int(pixel[2])
 
 	print im
-	img = Image.fromarray(im, 'L')
-	img.show()
+	img = Image.fromarray(im.astype(numpy.uint8), 'L')		# Cast to get rid of errors
 	img.save("OutIm.png")
 
 

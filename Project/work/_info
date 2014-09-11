@@ -8,36 +8,58 @@ z2
 !i10f 100
 cModel Technology
 dC:/Modeltech_pe_edu_10.3c/examples
-vInHandle
-Z0 !s110 1410397718
+vEdge
+Z0 !s110 1410448585
 !i10b 1
-!s100 8AHdXU?]03YJYE::bMCf32
-I^44zPR6i_QkG;?Zkj2MTA3
+!s100 5DAG<02l1Ug;k<;z0B`A23
+IJBI5]3Vfne[Ug_DZgfPEo1
 Z1 V`JN@9S9cnhjKRR_L]QIcM3
 Z2 dC:/Users/Ashley/Desktop/Hough/Project
-w1410397218
-8C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v
-FC:/Users/Ashley/Desktop/Hough/RTL/InHandle.v
+w1410448582
+8C:/Users/Ashley/Desktop/Hough/RTL/Edge.v
+FC:/Users/Ashley/Desktop/Hough/RTL/Edge.v
 L0 1
 Z3 OP;L;10.3c;59
 r1
 !s85 0
 31
-!s108 1410397718.801000
+!s108 1410448585.604000
+!s107 C:/Users/Ashley/Desktop/Hough/RTL/Edge.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Ashley/Desktop/Hough/RTL/Edge.v|
+!s101 -O0
+!i113 1
+Z4 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@edge
+vInHandle
+R0
+!i10b 1
+!s100 b=FaYag<^hmDCJkAL4[^O1
+IKYEVmS4c>X4oTe;cVC?f00
+R1
+R2
+w1410442356
+8C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v
+FC:/Users/Ashley/Desktop/Hough/RTL/InHandle.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1410448585.250000
 !s107 C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Ashley/Desktop/Hough/RTL/InHandle.v|
 !s101 -O0
 !i113 1
-Z4 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+R4
 n@in@handle
 vOutHandle
 R0
 !i10b 1
-!s100 3UV`V``V1[2LDWXCASZof3
-IfkJ36j0@JBZB=P>^A^WzY3
+!s100 97C8m13oB9a1@IYFC8`Mf3
+I=ndjZQOITXl@?RFh03cbQ2
 R1
 R2
-w1410397434
+w1410442811
 8C:/Users/Ashley/Desktop/Hough/RTL/OutHandle.v
 FC:/Users/Ashley/Desktop/Hough/RTL/OutHandle.v
 L0 1
@@ -45,7 +67,7 @@ R3
 r1
 !s85 0
 31
-!s108 1410397718.949000
+!s108 1410448585.513000
 !s107 C:/Users/Ashley/Desktop/Hough/RTL/OutHandle.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Ashley/Desktop/Hough/RTL/OutHandle.v|
 !s101 -O0
@@ -55,11 +77,11 @@ n@out@handle
 vTB
 R0
 !i10b 1
-!s100 kk[nlf=9<Kc8OPU<Nl@WD3
-IK:5iD^lZWM5RzQ@R^38QZ1
+!s100 LzY2fnh[AS@]G3=0<D@nM2
+I`i0?z^GcDSabKnDni?aC22
 R1
 R2
-w1410397712
+w1410446345
 8C:/Users/Ashley/Desktop/Hough/Verification/TB.v
 FC:/Users/Ashley/Desktop/Hough/Verification/TB.v
 L0 3
@@ -67,7 +89,7 @@ R3
 r1
 !s85 0
 31
-!s108 1410397718.868000
+!s108 1410448585.428000
 !s107 C:/Users/Ashley/Desktop/Hough/Verification/TB.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Ashley/Desktop/Hough/Verification/TB.v|
 !s101 -O0

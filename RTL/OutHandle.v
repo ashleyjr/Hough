@@ -4,6 +4,7 @@ module OutHandle(                                                  // Common to 
 	input wire	[7:0]	Pixel,
 	input wire			Frame,
 	input wire			Line,
+	output reg			FrameOut,
 	output reg	[7:0]	data,
 	output reg	[7:0]	i,
 	output reg	[7:0] 	j
@@ -13,11 +14,12 @@ module OutHandle(                                                  // Common to 
 	reg [7:0] row;
 	
 	always @ (posedge Clk or negedge nReset) begin
-		if(nReset) begin
+		if(!nReset) begin
 			i <= 0;
 			j <= 0;
 			data <= 0;
 		end else begin
+			FrameOut <= Frame;
 			data <= Pixel;
 			if(Frame) begin
 				i <= 0;
