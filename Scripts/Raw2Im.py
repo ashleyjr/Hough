@@ -23,9 +23,9 @@ if __name__ == "__main__":
 	j_max = 0
 	for i in range(0,length):
 		pixel = pixels[i].split(",")
-		print pixel
 		i = int(pixel[0])
 		j = int(pixel[1])
+
 		if(i > i_max):
 			i_max = i
 		if(j > j_max):
@@ -36,13 +36,34 @@ if __name__ == "__main__":
 
 	print im
 
+	low = 255;
+	high = 0;
 	for i in range(0,length):
 		pixel = pixels[i].split(",")
-		im[int(pixel[0])][int(pixel[1])] = int(pixel[2])
+		num = int(pixel[2])
+		im[int(pixel[0])][int(pixel[1])] = num
+		if(num < low):
+			low = num
+		if(num > high):
+			high = num
+
+
+	print im
+	print high
+	print low
+
+	img = Image.fromarray(im.astype(numpy.uint8), 'L')		# Cast to get rid of errors
+	img.save("OutImRaw.png")
+
+	for i in range(0,i_max+1):
+		for j in range(0,j_max+1):
+			im[i][j] = (im[i][j]-low)*(255/(high-low))
 
 	print im
 	img = Image.fromarray(im.astype(numpy.uint8), 'L')		# Cast to get rid of errors
-	img.save("OutIm.png")
+	img.save("OutImNorm.png")
+
+
 
 
 

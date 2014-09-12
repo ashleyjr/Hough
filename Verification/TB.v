@@ -4,7 +4,7 @@ module TB;
     
 
 
-   parameter CLK_PERIOD = 10;          // 100MHz clock - 10ns period  
+   parameter CLK_PERIOD = 5;          // 100MHz clock - 10ns period  
 
    	reg                  	nReset;
    	reg                   	Clk;
