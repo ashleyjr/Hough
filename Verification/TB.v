@@ -9,14 +9,16 @@ module TB;
    	reg                  	nReset;
    	reg                   	Clk;
    
-   	wire 	[7:0]        	PixelIn2Ed;
-   	wire                   	FrameIn2Ed;
-   	wire	            	LineIn2Ed;
+   	wire 	[7:0]        	PixelIn2Hough;
+   	wire                   	FrameIn2Hough;
+   	wire	            	LineIn2Hough;
 
-	wire 	[7:0]           PixelEd2Out;
-   	wire                  	FrameEd2Out;
-   	wire	               	LineEd2Out;
+	wire 	[7:0]           PixelHough2Out;
+   	wire                  	FrameHough2Out;
+   	wire	               	LineHough2Out;
 
+	wire	[7:0]			HeightOut;
+	wire	[7:0]			WidthOut;
 
    	wire	[7:0] 			data;
 	wire 	[7:0] 			i;
@@ -31,28 +33,28 @@ module TB;
 	InHandle InHandle(
 		.nReset     (nReset),
 		.Clk       	(Clk),
-		.Pixel		(PixelIn2Ed),
-		.Frame		(FrameIn2Ed),
-		.Line		(LineIn2Ed)
+		.Pixel		(PixelIn2Hough),
+		.Frame		(FrameIn2Hough),
+		.Line		(LineIn2Hough)
 	);
 
-	Edge Edge(
+	Hough Hough(
 		.nReset     (nReset),
 		.Clk       	(Clk),
-		.PixelIn	(PixelIn2Ed),
-		.FrameIn	(FrameIn2Ed),
-		.LineIn		(LineIn2Ed),
-		.PixelOut	(PixelEd2Out),
-		.FrameOut	(FrameEd2Out),
-		.LineOut	(LineEd2Out)
+		.PixelIn	(PixelIn2Hough),
+		.FrameIn	(FrameIn2Hough),
+		.LineIn		(LineIn2Hough),
+		.PixelOut	(PixelHough2Out),
+		.FrameOut	(FrameHough2Out),
+		.LineOut	(LineHough2Out)
 	);
   
 	OutHandle OutHandle(
 		.nReset     (nReset),
 		.Clk       	(Clk),
-		.Pixel		(PixelEd2Out),
-		.Frame		(FrameEd2Out),
-		.Line		(LineEd2Out),
+		.Pixel		(PixelHough2Out),
+		.Frame		(FrameHough2Out),
+		.Line		(LineHough2Out),
 		.FrameOut	(FrameOut),
 		.data		(data),
 		.i			(i),
@@ -92,7 +94,7 @@ module TB;
 						$fwrite(file,"%d,%d,%d\n",j,i,data);
 					end
 				end
-				if(LineEd2Out) begin
+				if(LineHough2Out) begin
 					count = count + 1;
 					$display(count);
 				end

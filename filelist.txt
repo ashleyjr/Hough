@@ -1,4 +1,8 @@
+RTL/Hough.v
 RTL/Edge.v
+RTL/Circle.v
+RTL/Height.v
+RTL/Width.v
 RTL/InHandle.v
 RTL/OutHandle.v
 Verification/TB.v

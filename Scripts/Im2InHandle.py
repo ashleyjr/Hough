@@ -10,13 +10,29 @@ import numpy
 if __name__ == "__main__":
 	# Get image options
 	parser = optparse.OptionParser()
-	parser.add_option('-i', '--image',
+	parser.add_option('-I', '--image',
 		dest="image"
 	)
-	parser.add_option('-s', '--size',
-		dest="size"
+	parser.add_option('-H', '--height',
+		dest="height"
+	)
+	parser.add_option('-W', '--width',
+		dest="width"
 	)
 	options, remainder = parser.parse_args()
+
+	if(options.width == None):
+		print("\nPlease specify image width (-w)")
+		sys.exit(0)
+	else:
+		width = int(options.width)
+
+	if(options.height == None):
+		print("\nPlease specify image height (-h)")
+		sys.exit(0)
+	else:
+		height = int(options.height)
+
 
 	if(options.image == None):
 		print("\nPlease specify image (-i)")
@@ -24,20 +40,16 @@ if __name__ == "__main__":
 	else:
 		image = options.image
 
-	if(options.size == None):
-		print("\nPlease specify size (-s)")
-		sys.exit(0)
-	else:
-		size = int(options.size)
-
 
 	# Resize, B&W and save image
 	im = Image.open(image)
 	name,ext = image.split('.')
 	im = im.convert('L')
-	im = im.resize((size,size),Image.ANTIALIAS)
+	im = im.resize((width,height),Image.ANTIALIAS)
 	sized = name + "Size." + ext
 	im.save(sized)
+
+
 	print ("\nResized image: %s" % str(sized))
 
 
@@ -51,13 +63,13 @@ if __name__ == "__main__":
 	verilog = open("../RTL/InHandleTemplate.v", "r")
 	code = verilog.read()
 
-	code = string.replace(code, '<COLS>', str(size))
-	code = string.replace(code, '<ROWS>', str(size))
+	code = string.replace(code, '<COLS>', str(width))
+	code = string.replace(code, '<ROWS>', str(height))
 
 	total = 0
 	code = code + "\n"
-	for i in range(0,size):
-		for j in range(0,size):
+	for i in range(0,height):
+		for j in range(0,width):
 			code = code + "\t\t\t" + str(total) + ": Pixel = " + str(imMat[i][j]) + ";\n"
 			total = total + 1
 	code = code + "\t\tendcase\n\tend\nendmodule"
