@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
 
 	# Open file and write verilog
-	raw = open("../Verification/OutIm.dat", "r")
+	raw = open("../OutIm.dat", "r")
 	data = raw.read()
 	raw.close()
 

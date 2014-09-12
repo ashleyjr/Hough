@@ -25,6 +25,7 @@ module TB;
 
 	integer frames;
    	integer file;
+	integer count;
 
 
 	InHandle InHandle(
@@ -67,12 +68,19 @@ module TB;
 		end
 	end
 
+	initial begin
+      $dumpfile("TB.vcd");
+      $dumpvars(0,TB);
+   end
+	
    	initial begin
 		#100 nReset = 0;
 		#100 nReset = 1;
 
-		file = $fopen("../Verification/OutIm.dat","w");  
+
+		file = $fopen("OutIm.dat","w");  
 		
+		count = 0;
 		frames = 0;
 		while(frames < 2) begin
 			@(posedge Clk) begin
@@ -84,11 +92,16 @@ module TB;
 						$fwrite(file,"%d,%d,%d\n",j,i,data);
 					end
 				end
+				if(LineEd2Out) begin
+					count = count + 1;
+					$display(count);
+				end
 			end
 		end
 		$fwrite(file,"%d,%d,%d",j,i,data);
-        $fclose(file);
-
+        //$fclose(file);
+	
+		$finish;
 	end
 
 
