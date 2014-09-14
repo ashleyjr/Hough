@@ -11,7 +11,7 @@ module Edge(
 );
 
 	// Buffer must be equal to or larger than the width of the image
-	parameter BUFF = 300;
+	parameter BUFF = 50;
 	// Operation buffer for control signals
 	parameter EXTRA = 1;
 

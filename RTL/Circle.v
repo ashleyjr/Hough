@@ -11,16 +11,51 @@ module Circle(
 	output reg			LineOut
 );
 
+	// Coordinates
+	reg	[7:0]	x;
+	reg	[7:0] 	y;
+
 	
+	always @ (posedge Clk  or negedge nReset) begin
+		if(!nReset) begin
+			x <= 0;
+			y <= 0;
+		end else begin
+			if(FrameIn) begin
+				x <= 1;
+				y <= 0;
+			end else begin
+				if(LineIn) begin
+					x <= 1;	
+					y = y + 1;
+				end else begin
+					x <= x + 1;
+				end
+				if((x == Width-1) && (y == Height-1)) begin
+					x <= 0;
+					y <= 0;
+				end
+			end
+		end
+	end
+		
 	always @ (posedge Clk or negedge nReset) begin
 		if(!nReset) begin   
 			PixelOut <= 0;
 			FrameOut <= 0;
 	    	LineOut  <= 0;		
 		end else begin
-			PixelOut <= PixelIn;
+
+			if(x == y ) begin
+				PixelOut <= 8'hFF;
+			end else begin
+				PixelOut <= PixelIn;
+			end
+
 			FrameOut <= FrameIn;
-	    	LineOut  <= LineIn;	
+	    	LineOut <= LineIn;
+
+		
 		end
 	end
 
