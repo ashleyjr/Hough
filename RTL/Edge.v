@@ -11,7 +11,7 @@ module Edge(
 );
 
 	// Buffer must be equal to or larger than the width of the image
-	parameter BUFF = 50;
+	parameter BUFF = 300;
 	// Operation buffer for control signals
 	parameter EXTRA = 1;
 
@@ -49,7 +49,7 @@ module Edge(
 	    	LineOut  <= 0;		
 		end else begin
 			// In
-			pixelDelay[0] <= PixelIn;
+			pixelDelay[0] <= PixelIn[7];
 	        frameDelay[0] <= FrameIn;
 			lineDelay[0] <= LineIn;		
 			// Difference the vertical and horizontal pixels

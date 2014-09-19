@@ -46,12 +46,17 @@ module Circle(
 	    	LineOut  <= 0;		
 		end else begin
 
-			if(x == y ) begin
-				PixelOut <= 8'hFF;
-			end else begin
-				PixelOut <= PixelIn;
-			end
+			//if(x == y ) begin
+			//	PixelOut <= 8'hFF;
+			//end else begin
+			//	PixelOut <= PixelIn;
+			//end
 
+			if(PixelIn > 10)
+				PixelOut <= 250;
+			else
+				PixelOut <= 10;
+			//PixelOut <= PixelIn;
 			FrameOut <= FrameIn;
 	    	LineOut <= LineIn;
 
