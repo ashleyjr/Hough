@@ -56,7 +56,7 @@ if __name__ == "__main__":
 	print im
 
 	img = Image.fromarray(im.astype(numpy.uint8),'L')
-	img.save("LennOut.png")
+	img.save("LennaOut.png")
 
 
 

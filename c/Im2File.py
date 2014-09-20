@@ -44,7 +44,7 @@ if __name__ == "__main__":
 	name,ext = image.split('.')
 	im = im.convert('L')
 	im = im.resize((width,height),Image.ANTIALIAS)
-	sized = name + "Size." + ext
+	sized = name + "In." + ext
 	im.save(sized)
 
 	# Convert to mat and do stuff
