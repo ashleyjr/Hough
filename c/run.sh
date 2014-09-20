@@ -1,5 +1,5 @@
-x="200"
-y="200"
+x="100"
+y="90"
 rm LennaIn.png
 rm LennaOut.png
 python Im2File.py -I Lenna.png -H ${x} -W ${y}	# Resize image and print to text file

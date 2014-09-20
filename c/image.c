@@ -24,7 +24,7 @@ int main(){
 	out = fopen("Lenna.dat","w");
 	for(i=0;i<x;i++){
 		for(j=0;j<y;j++){
-			fprintf(out,"%d\n\0",im[j][i]);
+			fprintf(out,"%d\n\0",im[i][j]);
 		}	
 	}
 	fclose(out);

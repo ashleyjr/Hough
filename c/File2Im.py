@@ -44,7 +44,7 @@ if __name__ == "__main__":
 	f.close()
 
 
-	im = numpy.zeros((height,width))
+	im = numpy.zeros((width,height))
 	im.setflags(write=True)
 
 	line = 0
