@@ -61,6 +61,13 @@ if __name__ == "__main__":
 	new.close()
 
 
+	# Create image header file
+
+	header = "image.h"
+	new = open(header, "w")
+	new.write("#define x %d\n" % height)
+	new.write("#define y %d\n" % width)
+	new.close()
 
 
 
