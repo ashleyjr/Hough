@@ -13,14 +13,14 @@ module TB;
    	wire                   	FrameIn2Hough;
    	wire	            	LineIn2Hough;
 
-	wire 	[7:0]           PixelHough2Out;
+	wire 	[10:0]           PixelHough2Out;
    	wire                  	FrameHough2Out;
    	wire	               	LineHough2Out;
 
 	wire	[7:0]			HeightOut;
 	wire	[7:0]			WidthOut;
 
-   	wire	[7:0] 			data;
+   	wire	[10:0] 			data;
 	wire 	[7:0] 			i;
 	wire 	[7:0] 			j;
 	wire					FrameOut;

@@ -4,7 +4,7 @@ module Hough(
 	input wire 	[7:0]	PixelIn,
 	input wire			FrameIn,
 	input wire			LineIn,
-	output wire	[7:0]	PixelOut,		// Output wires as registeres in submodules
+	output wire	[10:0]	PixelOut,		// Output wires as registeres in submodules
 	output wire			FrameOut,
 	output wire			LineOut
 );
@@ -12,7 +12,7 @@ module Hough(
 	wire	[7:0]			HeightOut;
 	wire	[7:0]			WidthOut;
 
-	wire	[7:0]			PixelEd2Ci;
+	wire	[10:0]			PixelEd2Ci;
 	wire					FrameEd2Ci;
 	wire					LineEd2Ci;
 

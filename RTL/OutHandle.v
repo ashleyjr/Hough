@@ -1,11 +1,11 @@
 module OutHandle(                                                  // Common to all
 	input wire			nReset,   
 	input wire			Clk,                                                        // Common to all
-	input wire	[7:0]	Pixel,
+	input wire	[10:0]	Pixel,
 	input wire			Frame,
 	input wire			Line,
 	output reg			FrameOut,
-	output reg	[7:0]	data,
+	output reg	[10:0]	data,
 	output reg	[7:0]	i,
 	output reg	[7:0] 	j
 );

@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
 	for i in range(0,i_max+1):
 		for j in range(0,j_max+1):
-			im[i][j] = (im[i][j]-low)*(255/(high-low))
+			im[i][j] = (im[i][j]*255)/high
 
 	print im
 	img = Image.fromarray(im.astype(numpy.uint8), 'L')		# Cast to get rid of errors
