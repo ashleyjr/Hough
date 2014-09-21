@@ -43,11 +43,15 @@ int main(){
 			//		im[i-1][j+1] -	 		im[i+1][j+1];
 						
 			im_new[i][j] = 
-				// horizontal 1
-				diff(im[i-1][j-1], im[i-1][j+1]) + 
-				diff((2*im[i][j-1]), (2*im[i][j+1])) +
-				diff(im[i+1][j-1],im[i+1][j+1]);
-				
+				// horizontal 
+				diff(	im[i-1][j-1], 	im[i-1][j+1]) 	+ 
+				diff((2*im[i][j-1]), (2*im[i][j+1])) 	+
+				diff(	im[i+1][j-1],	im[i+1][j+1])	+
+				// Vertical 	
+				diff(	im[i-1][j-1], 	im[i+1][j-1]) 	+ 
+				diff((2*im[i-1][j]), (2*im[i+1][j])) 	+
+				diff(	im[i-1][j+1],	im[i+1][j+1]);
+
 		//	im_new[i][j] = 	
 		//		// Vertical		
 		//		im[i-1][j-1] - im[i+1][j-1] + 
