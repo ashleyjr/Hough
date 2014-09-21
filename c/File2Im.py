@@ -44,13 +44,13 @@ if __name__ == "__main__":
 	f.close()
 
 
-	im = numpy.zeros((width,height))
+	im = numpy.zeros((height,width))
 	im.setflags(write=True)
 
 	line = 0
 	lines = data.split("\n")
-	for i  in range(0,width):
-		for j in range(0,height):
+	for i  in range(0,height):
+		for j in range(0,width):
 			im[i][j] = int(lines[line])
 			line = line + 1
 	print im

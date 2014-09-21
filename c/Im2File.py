@@ -43,19 +43,21 @@ if __name__ == "__main__":
 	im = Image.open(image)
 	name,ext = image.split('.')
 	im = im.convert('L')
-	im = im.resize((width,height),Image.ANTIALIAS)
+	im = im.resize((width,	height),Image.ANTIALIAS)
 	sized = name + "In." + ext
 	im.save(sized)
 
 	# Convert to mat and do stuff
 	imMat = numpy.asarray(im)
 
+	print imMat
+
 	code = ""
 	for i in range(0,height):
 		for j in range(0,width):
 			#code = code + str(i) + "," + str(j) + "," + str(imMat[i][j]) + "\n"
 			code = code + str(imMat[i][j]) + "\n"
-	new_name = name + ".dat"
+	new_name = name + "In.dat"
 	new = open(new_name, "w")
 	new.write(code)
 	new.close()
@@ -65,8 +67,8 @@ if __name__ == "__main__":
 
 	header = "image.h"
 	new = open(header, "w")
-	new.write("#define x %d\n" % height)
-	new.write("#define y %d\n" % width)
+	new.write("#define height %d\n" % height)
+	new.write("#define width %d\n" % width)
 	new.close()
 
 
