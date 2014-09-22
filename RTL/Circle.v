@@ -1,12 +1,12 @@
 module Circle(
 	input wire			nReset,                                                      // Common to all
 	input wire			Clk,     
-	input wire 	[10:0]	PixelIn,
+	input wire 	[7:0]	PixelIn,
 	input wire			FrameIn,
 	input wire			LineIn,
 	input wire	[7:0]	Width,
 	input wire	[7:0]	Height,
-	output reg	[10:0]	PixelOut,
+	output reg	[7:0]	PixelOut,
 	output reg			FrameOut,
 	output reg			LineOut
 );
