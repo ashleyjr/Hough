@@ -1,5 +1,6 @@
 RTL/Hough.v
 RTL/Edge.v
+RTL/Resize.v
 RTL/Circle.v
 RTL/Height.v
 RTL/Width.v
