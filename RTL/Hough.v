@@ -16,9 +16,9 @@ module Hough(
 	wire					FrameEd2Re;
 	wire					LineEd2Re;
 
-	wire	[7:0]			PixelRe2Ci;
-	wire					FrameRe2Ci;
-	wire					LineRe2Ci;
+	wire	[7:0]			PixelRe2Li;
+	wire					FrameRe2Li;
+	wire					LineRe2Li;
 
 
 
@@ -57,20 +57,20 @@ module Hough(
 		.LineIn		(LineEd2Re),
 		.Width		(WidthOut),
 		.Height		(HeightOut),
-		.PixelOut	(PixelRe2Ci),
-		.FrameOut	(FrameRe2Ci),
-		.LineOut	(LineRe2Ci)
+		.PixelOut	(PixelRe2Li),
+		.FrameOut	(FrameRe2Li),
+		.LineOut	(LineRe2Li)
 	
 	);
 	
-	Circle Circle(
+	Line Line(
 		.nReset     (nReset),
 		.Clk       	(Clk),
-		.PixelIn	(PixelRe2Ci),
-		.FrameIn	(FrameRe2Ci),
-		.LineIn		(LineRe2Ci),
-		.Width		(WidthOut),
-		.Height		(HeightOut),
+		.PixelIn	(PixelRe2Li),
+		.FrameIn	(FrameRe2Li),
+		.LineIn		(LineRe2Li),
+		.m			(8'h01),
+		.c			(8'h00),
 		.PixelOut	(PixelOut),
 		.FrameOut	(FrameOut),
 		.LineOut	(LineOut)

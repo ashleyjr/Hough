@@ -1,23 +1,24 @@
-module Resize(
+module Line(
 	input wire			nReset,                                                      // Common to all
 	input wire			Clk,     
 	input wire 	[7:0]	PixelIn,
 	input wire			FrameIn,
 	input wire			LineIn,
-	input wire	[7:0]	Width,
-	input wire	[7:0]	Height,
+	input wire	[7:0]	m,
+	input wire	[7:0]	c,
 	output reg	[7:0]	PixelOut,
 	output reg			FrameOut,
 	output reg			LineOut
 );
-		
-	reg [7:0]	x;
-	reg [7:0]	y;
 
-	reg [7:0]	BuffPixel;
+	// Coordinates
+	reg	[7:0]	x;
+	reg	[7:0] 	y;
+
+	reg	[7:0]	BuffPixel;
 	reg			BuffFrame;
-	reg			BuffLine;
-		
+	reg 		BuffLine;
+	
 	always @ (posedge Clk  or negedge nReset) begin
 		if(!nReset) begin
 			x <= 0;
@@ -36,28 +37,32 @@ module Resize(
 			end
 		end
 	end
-
-
+		
 	always @ (posedge Clk or negedge nReset) begin
-		if(!nReset) begin
+		if(!nReset) begin   
 			PixelOut <= 0;
 			FrameOut <= 0;
-			LineOut <= 0;		
-		end else begin		
-			// Buffer to sync up coordinates	
+	    	LineOut  <= 0;		
+		end else begin
+			
+			// Do calculations based on next coordinates	
 			BuffPixel <= PixelIn;
-			BuffFrame <= FrameIn;
 			BuffLine <= LineIn;
+			BuffFrame <= FrameIn;
 
-			// Put a line on the border as this is rubbish
-			if(	(x == 0)		|
-				(y == 0)		|
-				(x == Width-1)	|
-				(y == Height-1)
-				)	PixelOut <= 8'h00;
-			else 	PixelOut <= BuffPixel;
+			// Draw a line
+			// y = mx + c	
+			if(y == ((m*x) + c)) begin
+				PixelOut <= 8'hFF;
+			end else begin
+				PixelOut <= BuffPixel;
+			end
 			FrameOut <= BuffFrame;
-			LineOut <= BuffLine;	
+	    	LineOut <= BuffLine;
+
+		
 		end
 	end
+
+
 endmodule

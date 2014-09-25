@@ -1,5 +1,5 @@
 cd Scripts
-python Im2InHandle.py -I Lenna.png -W 75 -H 75
+python Im2InHandle.py -I Lenna.png -W 100 -H 100
 cd ..
 iverilog -o design.dat -c filelist.txt
 vvp design.dat -vcd
