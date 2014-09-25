@@ -14,10 +14,6 @@ module Line(
 	// Coordinates
 	reg	[7:0]	x;
 	reg	[7:0] 	y;
-
-	reg	[7:0]	BuffPixel;
-	reg			BuffFrame;
-	reg 		BuffLine;
 	
 	always @ (posedge Clk  or negedge nReset) begin
 		if(!nReset) begin
@@ -37,28 +33,26 @@ module Line(
 			end
 		end
 	end
+
 		
 	always @ (posedge Clk or negedge nReset) begin
 		if(!nReset) begin   
 			PixelOut <= 0;
 			FrameOut <= 0;
 	    	LineOut  <= 0;		
+		
 		end else begin
 			
-			// Do calculations based on next coordinates	
-			BuffPixel <= PixelIn;
-			BuffLine <= LineIn;
-			BuffFrame <= FrameIn;
+			// TODO: You can't draw a line like this, no vertical!
 
-			// Draw a line
-			// y = mx + c	
-			if(y == ((m*x) + c)) begin
+			// Draw a line	
+			if(y == (m*x) + c) begin
 				PixelOut <= 8'hFF;
 			end else begin
-				PixelOut <= BuffPixel;
+				PixelOut <= PixelIn;
 			end
-			FrameOut <= BuffFrame;
-	    	LineOut <= BuffLine;
+			FrameOut <= FrameIn;
+	    	LineOut <= LineIn;
 
 		
 		end

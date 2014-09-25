@@ -49,13 +49,11 @@ module Resize(
 			BuffFrame <= FrameIn;
 			BuffLine <= LineIn;
 
-			// Put a line on the border as this is rubbish
-			if(	(x == 0)		|
-				(y == 0)		|
-				(x == Width-1)	|
-				(y == Height-1)
-				)	PixelOut <= 8'h00;
-			else 	PixelOut <= BuffPixel;
+			// Put remove pixel that are nonsense
+			if(	(x > Width-3) | (y > Height-3))		
+				PixelOut <= 8'h00;
+			else 									
+				PixelOut <= BuffPixel;
 			FrameOut <= BuffFrame;
 			LineOut <= BuffLine;	
 		end

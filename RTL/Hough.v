@@ -70,7 +70,7 @@ module Hough(
 		.FrameIn	(FrameRe2Li),
 		.LineIn		(LineRe2Li),
 		.m			(8'h01),
-		.c			(8'h00),
+		.c			(8'h01),
 		.PixelOut	(PixelOut),
 		.FrameOut	(FrameOut),
 		.LineOut	(LineOut)
