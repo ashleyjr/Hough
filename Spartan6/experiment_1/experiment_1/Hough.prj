@@ -1,0 +1,6 @@
+verilog work "../../../RTL/Width.v"
+verilog work "../../../RTL/Resize.v"
+verilog work "../../../RTL/Line.v"
+verilog work "../../../RTL/Height.v"
+verilog work "../../../RTL/Edge.v"
+verilog work "../../../RTL/Hough.v"
