@@ -26,7 +26,7 @@ module Line(
 			end else begin
 				if(LineIn) begin
 					x <= 0;	
-					y = y + 1;
+					y <= y + 1;
 				end else begin
 					x <= x + 1;
 				end
